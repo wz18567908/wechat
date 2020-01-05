@@ -1,4 +1,4 @@
-package com.example.demo.advice;
+package com.example.demo.interceptor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
