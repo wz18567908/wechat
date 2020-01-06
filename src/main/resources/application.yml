@@ -1,3 +1,5 @@
+server:
+  port: 80
 #配置数据源
 spring: 
   datasource:
@@ -36,7 +38,7 @@ spring:
         reset-enable: false
         url-pattern: /druid/*
         # 添加IP白名单
-        #allow:
+        allow: localhost
         # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
         #deny:
       web-stat-filter:
@@ -44,7 +46,19 @@ spring:
         url-pattern: /*
         # 忽略过滤格式
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        
+  #热部署生效
+  devtools:
+    restart:
+     enabled: false
+     #设置重启的目录
+     additional-paths: src/main/java
+     #classpath目录下的WEB-INF文件夹内容修改不重启
+     exclude: WEB-INF/**
 
 #指定mybatis映射文件的地址
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+swagger:
+  show: true

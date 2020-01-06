@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.User;
@@ -13,6 +14,11 @@ import com.example.demo.service.UserService;
 import com.example.demo.utils.DataFormatUtils;
 import com.example.demo.utils.DemoConstants;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
+
+@Api("测试")
 @RestController
 public class HelloWorldController extends BaseController<AuthManagerController> implements Serializable {
 
@@ -21,14 +27,8 @@ public class HelloWorldController extends BaseController<AuthManagerController> 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/hello")
-    public Map<String, Object> index() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("data", "Hello World");
-        return map;
-    }
-    
-    @RequestMapping("/user")
+    @ApiOperation("获取用户")
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public Map<String, Object> getUser() {
         User user = new User();
         String message = "";
@@ -40,8 +40,9 @@ public class HelloWorldController extends BaseController<AuthManagerController> 
         }
         return DataFormatUtils.format(message, user);
     }
-    
-    @RequestMapping("/save")
+
+    @ApiIgnore
+    @RequestMapping(value = "/save", method = RequestMethod.GET)
     public Map<String, Object> saveUser() {
         User user = new User();
         user.setId(2);

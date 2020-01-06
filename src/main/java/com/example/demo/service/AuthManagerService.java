@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,9 +53,9 @@ public class AuthManagerService {
 
         User user = userDao.findUserByName(userName);
         String encryptPwd = DesEncrypter.getInstance().encrypt(password);
-        if (user == null || !hasPermit) {
-            return false;
-        }
+//        if (user == null || !hasPermit) {
+//            return false;
+//        }
         // 验证逻辑
         
         return true;

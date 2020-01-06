@@ -1,6 +1,7 @@
 package com.example.demo.advice;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ import com.example.demo.utils.DemoConstants;
 import com.example.demo.utils.UrlDataUtil;
 
 @ControllerAdvice
-public class DemoResponseBodyAdvice implements ResponseBodyAdvice<Map<String, Object>> {
+public class DemoResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -24,7 +25,7 @@ public class DemoResponseBodyAdvice implements ResponseBodyAdvice<Map<String, Ob
     }
 
     @Override
-    public Map<String, Object> beforeBodyWrite(Map<String, Object> responseBody, MethodParameter returnType,
+    public Object beforeBodyWrite(Object responseBody, MethodParameter returnType,
             MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType,
             ServerHttpRequest request, ServerHttpResponse response) {
         URI uri = request.getURI();
@@ -41,7 +42,9 @@ public class DemoResponseBodyAdvice implements ResponseBodyAdvice<Map<String, Ob
         if (! (tokenList == null || tokenList.isEmpty())) {
             token = tokenList.get(0);
         }
-        responseBody.put(DemoConstants.TOKEN_NAME, token);
-        return responseBody;
+        Map<String, Object> responseMap = new HashMap<String, Object>();
+        responseMap.put("data", response);
+        responseMap.put(DemoConstants.TOKEN_NAME, token);
+        return responseMap;
     }
 }

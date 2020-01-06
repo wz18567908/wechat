@@ -37,7 +37,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         Map<String, Object> data = new HashMap<String, Object>();
 
         String path = request.getRequestURI();
-        System.out.println("path+++++++++++++"+path);
         List<String> urlList = UrlDataUtil.getData();
         for (String url : urlList) {
             if (!url.equals("/login")) {
@@ -47,7 +46,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
                 }
             }
         }
-        System.out.println("token+++++++++++++"+token);
         if(token == null || token.equals("")) {
             token = request.getHeader(DemoConstants.HTTP_HEADER_AUTHORIZATION);
         }
@@ -55,7 +53,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             data = DataFormatUtils.tokenFormat(DemoConstants.AUTH_NO_TOKEN_MSG);
             valid = false;
         }
-        System.out.println("valid+++++++++++++"+valid);
         
         if (valid) {
             try {

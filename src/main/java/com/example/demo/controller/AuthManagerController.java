@@ -21,6 +21,10 @@ import com.example.demo.utils.DataFormatUtils;
 import com.example.demo.utils.DemoConstants;
 import com.example.demo.utils.StringUtil;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api("登录认证")
 @RestController
 public class AuthManagerController extends BaseController<AuthManagerController> implements Serializable {
 
@@ -52,7 +56,8 @@ public class AuthManagerController extends BaseController<AuthManagerController>
 
         return DataFormatUtils.tokenFormat(message, token, user);
     }
-    
+
+    @ApiOperation("用户登录")
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Map<String, Object> login(HttpServletRequest request) {
         return DataFormatUtils.tokenFormat("ceshi", "123456", "ddd");

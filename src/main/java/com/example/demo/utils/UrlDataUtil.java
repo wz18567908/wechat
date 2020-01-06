@@ -14,6 +14,13 @@ public class UrlDataUtil {
         controllerMethodNames.add("/login");
         controllerMethodNames.add("/logout");
         controllerMethodNames.add("/user");
+        // for swagger2
+        controllerMethodNames.add("/swagger-ui.html");
+        controllerMethodNames.add("/swagger-resources");
+        controllerMethodNames.add("/v2/api-docs");
+        controllerMethodNames.add("configuration/ui");
+        controllerMethodNames.add("configuration/security");
+        // for druid
         controllerMethodNames.add("/druid");
     }
 
