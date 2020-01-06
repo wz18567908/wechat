@@ -21,9 +21,9 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
+    @Bean(destroyMethod = "close", initMethod = "init")
     @ConfigurationProperties(prefix = "spring.datasource")
-    @Bean
-    public DataSource druid() {
+    public DataSource druidDataSource() {
         return new DruidDataSource();
     }
 }

@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
  */
 @WebServlet(urlPatterns = "/druid/*",
                    initParams = {
-                          @WebInitParam(name = "allow",value = "127.0.0.1"),
+                          @WebInitParam(name = "allow",value = "192.168.0.8"),
                            @WebInitParam(name = "deny",value = "192.168.1.3"),
                            @WebInitParam(name ="loginUsername",value = "admin"),
                            @WebInitParam(name = "loginPassword",value = "123456"),

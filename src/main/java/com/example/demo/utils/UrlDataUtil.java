@@ -18,8 +18,8 @@ public class UrlDataUtil {
         controllerMethodNames.add("/swagger-ui.html");
         controllerMethodNames.add("/swagger-resources");
         controllerMethodNames.add("/v2/api-docs");
-        controllerMethodNames.add("configuration/ui");
-        controllerMethodNames.add("configuration/security");
+        controllerMethodNames.add("/configuration/ui");
+        controllerMethodNames.add("/configuration/security");
         // for druid
         controllerMethodNames.add("/druid");
     }

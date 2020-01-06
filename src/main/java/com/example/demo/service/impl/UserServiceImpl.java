@@ -20,14 +20,4 @@ public class UserServiceImpl implements UserService {
         userDao.saveUser(user);
     }
 
-//    @Transactional
-//    public void insertService(){
-//        HashMap<String, Object> map = new HashMap<String, Object>();
-//        map.put("city", "西安");
-//        map.put("num", 9421);
-//
-//        happinessDao.insertHappiness(map);
-//        int a = 1 / 0; //模拟故障
-//        happinessDao.insertHappiness(map);
-//    }
 }
